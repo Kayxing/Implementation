@@ -23,6 +23,18 @@
     <script src="service/js/owl.carousel.min.js"></script>
 <script src="assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxtdLYTZkt4YpPwiMIwgPInXsu7wWIRMzpVTLPDUcdUmZPgN-q36-7aAiXP5SMrcPiSDA/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
     
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --> 
@@ -212,7 +224,8 @@
       <div class="col-md-7">
 	  <strong>Please give us your feedback!</strong>
         <p>Any problems or feedbacks? Send a message to us! We are always happy to hear from you, and our team will be in touch with you within 5 business days!</p>
-        <form id="contact" method="post" class="form" role="form" method="post" action="https://script.google.com/macros/s/AKfycbxtdLYTZkt4YpPwiMIwgPInXsu7wWIRMzpVTLPDUcdUmZPgN-q36-7aAiXP5SMrcPiSDA/exec">
+        <form id="contact" method="post" class="form" role="form" method="post" 
+        action="https://script.google.com/macros/s/AKfycbxtdLYTZkt4YpPwiMIwgPInXsu7wWIRMzpVTLPDUcdUmZPgN-q36-7aAiXP5SMrcPiSDA/exec">
           <div class="row">
             <div class="col-md-12 form-group">
               <input class="form-control" id="name" name="name" placeholder="Name" type="text" required />
