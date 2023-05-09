@@ -24,28 +24,7 @@
 <script src="assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
 
-<script>
-  const form = document.querySelector("#contact")
-  const submitButton = document.querySelector("#submit")
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzIsNCANY3PZPK_a1-5_VgM_ZM65sVsCqZfkXHMFCiLDz8F8FrmksBoajf09N8Xoyu4/exec'
 
-  form.addEventListener('submit', e => {
-    submitButton.disabled = true
-    e.preventDefault()
-    let requestBody = new FormData(form)
-    fetch(scriptURL, { method: 'POST', body: requestBody})
-      .then(response => {
-         alert('Success!', response)
-         submitButton.disabled = false
-        })
-      .catch(error => {
-      alert('Error!', error.message)
-        submitButton.disabled = false
-
-      }
-      )
-  })
-</script>
     
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --> 
