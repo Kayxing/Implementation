@@ -84,7 +84,8 @@
       <div class="col-md-7">
 	  <strong>Please give us your feedback!</strong>
         <p>Any problems or feedbacks? Send a message to us! We are always happy to hear from you, and our team will be in touch with you within 5 business days!</p>
-        <form id="contact" method="post" class="form" role="form">
+        <form id="contact" class="form" role="form" method="post" 
+        action="https://script.google.com/macros/s/AKfycbztU88jN7NnM2-r0ANMG7tkvjviwW8ah2Z1WnyZZwd3SijuDBY5lh4N-Z-et0wNVbWdMA/exec">
           <div class="row">
             <div class="col-md-12 form-group">
               <input class="form-control" id="name" name="name" placeholder="Name" type="text" required />
@@ -94,7 +95,7 @@
             </div>
 			 <div class="col-md-12 form-group">
               <textarea class="form-control" id="message" name="message" placeholder="Message" rows="5"></textarea>             
-              <button class="btn btn-lg pull-left" type="submit">Send Message</button>
+              <button class="btn btn-lg pull-left" type="submit" id="submit">Send Message</button>
             </div>
           </div>
            
