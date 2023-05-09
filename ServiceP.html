@@ -25,14 +25,25 @@
 <script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
 
 <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbxXOeTA_YuxqquhS-4jvvZozwoWwU4BLsPLQeI6tE0_uwWciUH5lhoLXdCpSNBPH7za/exec'
-  const form = document.forms['submit-to-google-sheet']
+  const form = document.querySelector("#contact")
+  const submitButton = document.querySelector("#submit")
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzIsNCANY3PZPK_a1-5_VgM_ZM65sVsCqZfkXHMFCiLDz8F8FrmksBoajf09N8Xoyu4/exec'
 
   form.addEventListener('submit', e => {
+    submitButton.disabled = true
     e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
+    let requestBody = new FormData(form)
+    fetch(scriptURL, { method: 'POST', body: requestBody})
+      .then(response => {
+         alert('Success!', response)
+         submitButton.disabled = false
+        })
+      .catch(error => {
+      alert('Error!', error.message)
+        submitButton.disabled = false
+
+      }
+      )
   })
 </script>
     
@@ -225,7 +236,7 @@
 	  <strong>Please give us your feedback!</strong>
         <p>Any problems or feedbacks? Send a message to us! We are always happy to hear from you, and our team will be in touch with you within 5 business days!</p>
         <form id="contact" class="form" role="form" method="post" 
-        action="https://script.google.com/macros/s/AKfycbxXOeTA_YuxqquhS-4jvvZozwoWwU4BLsPLQeI6tE0_uwWciUH5lhoLXdCpSNBPH7za/exec">
+        action="https://script.google.com/macros/s/AKfycbzIsNCANY3PZPK_a1-5_VgM_ZM65sVsCqZfkXHMFCiLDz8F8FrmksBoajf09N8Xoyu4/exec">
           <div class="row">
             <div class="col-md-12 form-group">
               <input class="form-control" id="name" name="name" placeholder="Name" type="text" required />
@@ -235,7 +246,7 @@
             </div>
 			 <div class="col-md-12 form-group">
               <textarea class="form-control" id="message" name="message" placeholder="Message" rows="5"></textarea>             
-              <button class="btn btn-lg pull-left" type="submit">Send Message</button>
+              <button class="btn btn-lg pull-left" type="submit" id="submit">Send Message</button>
             </div>
           </div>
            
